@@ -1,0 +1,192 @@
+{
+  "profile": {
+    "entityUrn": "urn:li:fs_profile:ACoAAAxxxxxBcDeF",
+    "firstName": "Ada",
+    "lastName": "Lovelace",
+    "headline": "Analyst at the Analytical Engine Company",
+    "summary": "Mathematician. Interested in symbolic computation.",
+    "industryName": "Computer Software",
+    "locationName": "London, England",
+    "geoLocationName": "London, England, United Kingdom",
+    "geoCountryName": "United Kingdom",
+    "miniProfile": {
+      "entityUrn": "urn:li:fs_miniProfile:ACoAAAxxxxxBcDeF",
+      "objectUrn": "urn:li:member:123456789",
+      "publicIdentifier": "adalovelace",
+      "firstName": "Ada",
+      "lastName": "Lovelace",
+      "occupation": "Analyst at the Analytical Engine Company",
+      "premium": false,
+      "influencer": true,
+      "picture": {
+        "com.linkedin.common.VectorImage": {
+          "rootUrl": "https://media.licdn.com/dms/image/C4E03/profile/",
+          "artifacts": [
+            {
+              "width": 100,
+              "height": 100,
+              "fileIdentifyingUrlPathSegment": "100_100/0/abc?e=1234&v=beta"
+            },
+            {
+              "width": 800,
+              "height": 800,
+              "fileIdentifyingUrlPathSegment": "800_800/0/abc?e=1234&v=beta"
+            },
+            {
+              "width": 400,
+              "height": 400,
+              "fileIdentifyingUrlPathSegment": "400_400/0/abc?e=1234&v=beta"
+            }
+          ]
+        }
+      },
+      "backgroundImage": {
+        "com.linkedin.common.VectorImage": {
+          "rootUrl": "https://media.licdn.com/dms/image/C4E16/background/",
+          "artifacts": [
+            {
+              "width": 1400,
+              "height": 350,
+              "fileIdentifyingUrlPathSegment": "1400_350/0/xyz?e=1234&v=beta"
+            }
+          ]
+        }
+      }
+    }
+  },
+  "positionView": {
+    "elements": [
+      {
+        "title": "Lead Analyst",
+        "companyName": "Analytical Engine Company",
+        "description": "Wrote the first algorithm intended for machine execution.",
+        "locationName": "London, England",
+        "companyUrn": "urn:li:fs_miniCompany:1441",
+        "employmentType": "FULL_TIME",
+        "timePeriod": {
+          "startDate": { "month": 3, "year": 2019 }
+        },
+        "company": {
+          "employeeCountRange": { "start": 1001, "end": 5000 },
+          "industries": ["Computer Software"],
+          "miniCompany": {
+            "entityUrn": "urn:li:fs_miniCompany:1441",
+            "name": "Analytical Engine Company",
+            "universalName": "analytical-engine",
+            "logo": {
+              "com.linkedin.common.VectorImage": {
+                "rootUrl": "https://media.licdn.com/dms/image/C4D0B/company-logo/",
+                "artifacts": [
+                  {
+                    "width": 200,
+                    "height": 200,
+                    "fileIdentifyingUrlPathSegment": "200_200/0/logo?e=1&v=beta"
+                  }
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "title": "Junior Analyst",
+        "companyName": "Difference Engine Ltd",
+        "timePeriod": {
+          "startDate": { "month": 1, "year": 2017 },
+          "endDate": { "month": 2, "year": 2019 }
+        }
+      }
+    ]
+  },
+  "educationView": {
+    "elements": [
+      {
+        "schoolName": "University of London",
+        "degreeName": "BSc",
+        "fieldOfStudy": "Mathematics",
+        "grade": "First",
+        "activities": "Mathematics Society",
+        "schoolUrn": "urn:li:fs_miniSchool:1646",
+        "timePeriod": {
+          "startDate": { "year": 2013 },
+          "endDate": { "year": 2016 }
+        },
+        "school": {
+          "entityUrn": "urn:li:fs_miniSchool:1646",
+          "schoolName": "University of London",
+          "universalName": "university-of-london"
+        }
+      }
+    ]
+  },
+  "skillView": {
+    "elements": [{ "name": "Algorithms" }, { "name": "Mathematics" }]
+  },
+  "certificationView": {
+    "elements": [
+      {
+        "name": "Certified Analytical Engineer",
+        "authority": "Royal Society",
+        "licenseNumber": "RS-1843",
+        "url": "https://example.org/cert",
+        "timePeriod": { "startDate": { "month": 6, "year": 2020 } }
+      }
+    ]
+  },
+  "languageView": {
+    "elements": [
+      { "name": "English", "proficiency": "NATIVE_OR_BILINGUAL" },
+      { "name": "French", "proficiency": "PROFESSIONAL_WORKING" }
+    ]
+  },
+  "projectView": {
+    "elements": [
+      {
+        "title": "Note G",
+        "description": "Bernoulli number algorithm.",
+        "url": "https://example.org/note-g",
+        "timePeriod": { "startDate": { "year": 1843 } }
+      }
+    ]
+  },
+  "publicationView": {
+    "elements": [
+      {
+        "name": "Sketch of the Analytical Engine",
+        "publisher": "Taylor's Scientific Memoirs",
+        "date": { "month": 10, "year": 1843 }
+      }
+    ]
+  },
+  "honorView": {
+    "elements": [
+      { "title": "Fellow", "issuer": "Royal Society", "issueDate": { "year": 1844 } }
+    ]
+  },
+  "volunteerExperienceView": {
+    "elements": [
+      {
+        "role": "Mentor",
+        "companyName": "Girls Who Compute",
+        "cause": "SCIENCE_AND_TECHNOLOGY",
+        "timePeriod": { "startDate": { "year": 2021 } }
+      }
+    ]
+  },
+  "courseView": {
+    "elements": [{ "name": "Advanced Calculus", "number": "MATH301" }]
+  },
+  "organizationView": {
+    "elements": [
+      { "name": "London Mathematical Society", "position": "Member", "timePeriod": { "startDate": { "year": 2018 } } }
+    ]
+  },
+  "patentView": {
+    "elements": [
+      { "title": "Computing apparatus", "number": "GB1843", "issueDate": { "year": 1843 } }
+    ]
+  },
+  "testScoreView": {
+    "elements": [{ "name": "GRE", "score": "336", "date": { "year": 2012 } }]
+  }
+}

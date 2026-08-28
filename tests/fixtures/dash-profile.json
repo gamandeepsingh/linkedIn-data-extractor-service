@@ -1,0 +1,141 @@
+{
+  "data": {
+    "*elements": ["urn:li:fsd_profile:ACoAAAxxxxxBcDeF"]
+  },
+  "included": [
+    {
+      "$type": "com.linkedin.voyager.dash.identity.profile.Profile",
+      "entityUrn": "urn:li:fsd_profile:ACoAAAxxxxxBcDeF",
+      "objectUrn": "urn:li:member:123456789",
+      "publicIdentifier": "adalovelace",
+      "firstName": "Ada",
+      "lastName": "Lovelace",
+      "headline": "Analyst at the Analytical Engine Company",
+      "summary": "Mathematician. Interested in symbolic computation.",
+      "premium": false,
+      "influencer": true,
+      "openToWork": true,
+      "hiring": false,
+      "geoLocation": {
+        "*geo": "urn:li:fsd_geo:102257491"
+      },
+      "*industry": ["urn:li:fsd_industry:4"],
+      "profilePicture": {
+        "displayImageReference": {
+          "vectorImage": {
+            "rootUrl": "https://media.licdn.com/dms/image/C4E03/profile/",
+            "artifacts": [
+              {
+                "width": 200,
+                "height": 200,
+                "fileIdentifyingUrlPathSegment": "200_200/0/abc?e=1&v=beta"
+              },
+              {
+                "width": 800,
+                "height": 800,
+                "fileIdentifyingUrlPathSegment": "800_800/0/abc?e=1&v=beta"
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "$type": "com.linkedin.voyager.dash.identity.profile.Profile",
+      "entityUrn": "urn:li:fsd_profile:ACoAAAotherperson",
+      "publicIdentifier": "charlesbabbage",
+      "firstName": "Charles",
+      "lastName": "Babbage",
+      "headline": "Inventor"
+    },
+    {
+      "$type": "com.linkedin.voyager.dash.common.Geo",
+      "entityUrn": "urn:li:fsd_geo:102257491",
+      "defaultLocalizedName": "London, England, United Kingdom"
+    },
+    {
+      "$type": "com.linkedin.voyager.dash.common.Industry",
+      "entityUrn": "urn:li:fsd_industry:4",
+      "name": "Computer Software"
+    },
+    {
+      "$type": "com.linkedin.voyager.dash.identity.profile.Position",
+      "entityUrn": "urn:li:fsd_profilePosition:(ACoAAAxxxxxBcDeF,1)",
+      "*profile": "urn:li:fsd_profile:ACoAAAxxxxxBcDeF",
+      "title": "Lead Analyst",
+      "companyName": "Analytical Engine Company",
+      "description": "Wrote the first algorithm intended for machine execution.",
+      "locationName": "London, England",
+      "employmentTypeUrn": "urn:li:fsd_employmentType:FULL_TIME",
+      "*company": "urn:li:fsd_company:1441",
+      "dateRange": {
+        "start": { "month": 3, "year": 2019 }
+      }
+    },
+    {
+      "$type": "com.linkedin.voyager.dash.identity.profile.Position",
+      "entityUrn": "urn:li:fsd_profilePosition:(ACoAAAotherperson,9)",
+      "*profile": "urn:li:fsd_profile:ACoAAAotherperson",
+      "title": "Should Not Appear",
+      "companyName": "Someone Else Ltd"
+    },
+    {
+      "$type": "com.linkedin.voyager.dash.organization.Company",
+      "entityUrn": "urn:li:fsd_company:1441",
+      "name": "Analytical Engine Company",
+      "universalName": "analytical-engine",
+      "logo": {
+        "vectorImage": {
+          "rootUrl": "https://media.licdn.com/dms/image/C4D0B/company-logo/",
+          "artifacts": [
+            {
+              "width": 200,
+              "height": 200,
+              "fileIdentifyingUrlPathSegment": "200_200/0/logo?e=1&v=beta"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "$type": "com.linkedin.voyager.dash.identity.profile.Education",
+      "entityUrn": "urn:li:fsd_profileEducation:(ACoAAAxxxxxBcDeF,1)",
+      "*profile": "urn:li:fsd_profile:ACoAAAxxxxxBcDeF",
+      "schoolName": "University of London",
+      "degreeName": "BSc",
+      "fieldOfStudy": "Mathematics",
+      "*school": "urn:li:fsd_school:1646",
+      "dateRange": {
+        "start": { "year": 2013 },
+        "end": { "year": 2016 }
+      }
+    },
+    {
+      "$type": "com.linkedin.voyager.dash.organization.School",
+      "entityUrn": "urn:li:fsd_school:1646",
+      "name": "University of London",
+      "universalName": "university-of-london"
+    },
+    {
+      "$type": "com.linkedin.voyager.dash.identity.profile.Skill",
+      "entityUrn": "urn:li:fsd_profileSkill:(ACoAAAxxxxxBcDeF,1)",
+      "*profile": "urn:li:fsd_profile:ACoAAAxxxxxBcDeF",
+      "name": "Algorithms"
+    },
+    {
+      "$type": "com.linkedin.voyager.dash.identity.profile.Certification",
+      "entityUrn": "urn:li:fsd_profileCertification:(ACoAAAxxxxxBcDeF,1)",
+      "*profile": "urn:li:fsd_profile:ACoAAAxxxxxBcDeF",
+      "name": "Certified Analytical Engineer",
+      "authority": "Royal Society",
+      "dateRange": { "start": { "month": 6, "year": 2020 } }
+    },
+    {
+      "$type": "com.linkedin.voyager.dash.identity.profile.Language",
+      "entityUrn": "urn:li:fsd_profileLanguage:(ACoAAAxxxxxBcDeF,1)",
+      "*profile": "urn:li:fsd_profile:ACoAAAxxxxxBcDeF",
+      "name": "English",
+      "proficiency": "NATIVE_OR_BILINGUAL"
+    }
+  ]
+}

@@ -116,6 +116,13 @@ async function follow(url: string, jar: CookieJar, init: RequestInit): Promise<R
 
     jar.absorb(res);
 
+    if (jar.wasCleared("li_at")) {
+      throw new ApiError(
+        "LINKEDIN_AUTH_FAILED",
+        "LinkedIn revoked the session (it responded with li_at=\"delete me\"). That happens when a session cookie is replayed without the browser fingerprint it was issued to. Set LINKEDIN_COOKIE to the full Cookie header from a logged-in request (including bcookie and bscookie) and LINKEDIN_USER_AGENT to that same browser's user agent.",
+      );
+    }
+
     if (res.status < 300 || res.status >= 400) return res;
 
     const location = res.headers.get("location");
@@ -134,7 +141,7 @@ async function follow(url: string, jar: CookieJar, init: RequestInit): Promise<R
   if (selfRedirects >= MAX_REDIRECTS) {
     throw new ApiError(
       "LINKEDIN_AUTH_FAILED",
-      "LinkedIn is redirecting every request back on itself, which is what it does when the session is no longer valid.",
+      "LinkedIn is redirecting every request back on itself, which it does when the session is not valid for this client. Refresh the cookies from a logged-in browser, and make sure LINKEDIN_USER_AGENT matches that browser.",
     );
   }
 

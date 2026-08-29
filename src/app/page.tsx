@@ -111,7 +111,7 @@ export default function Home() {
     <div className="relative min-h-screen">
       <div className="pointer-events-none absolute inset-x-0 top-0 h-[420px] grid-bg" />
 
-      <main className="container relative max-w-5xl py-12 sm:py-16">
+      <main className="relative mx-auto w-full max-w-5xl px-6 py-12 sm:py-16">
         <header className="mb-8 space-y-3">
           <h1 className="text-balance text-3xl font-semibold tracking-tight sm:text-4xl">
             LinkedIn Profile <span className="neon-text">API</span>

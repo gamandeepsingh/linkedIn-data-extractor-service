@@ -18,7 +18,7 @@ export async function GET() {
     uptimeSeconds: Math.round(process.uptime()),
     linkedin: {
       configured: hasAnyCredentials(),
-      mode: env.email ? "credentials" : "none",
+      mode: env.liAt ? "cookie" : env.email ? "credentials" : "none",
     },
     mongo,
     cacheTtlSeconds: env.cacheTtlSeconds,

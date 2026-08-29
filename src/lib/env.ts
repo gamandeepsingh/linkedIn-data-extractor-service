@@ -12,6 +12,10 @@ function num(key: string, fallback: number): number {
 }
 
 export const env = {
+  cookie: optional("LINKEDIN_COOKIE"),
+  userAgent: optional("LINKEDIN_USER_AGENT"),
+  liAt: optional("LINKEDIN_LI_AT"),
+  jsessionId: optional("LINKEDIN_JSESSIONID"),
   email: optional("LINKEDIN_EMAIL"),
   password: optional("LINKEDIN_PASSWORD"),
 
@@ -26,5 +30,5 @@ export const env = {
 };
 
 export function hasAnyCredentials() {
-  return Boolean(env.email && env.password);
+  return Boolean(env.cookie || env.liAt || (env.email && env.password));
 }

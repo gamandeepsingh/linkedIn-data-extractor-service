@@ -1,9 +1,9 @@
 import { env } from "../env";
 import { ApiError } from "../errors";
-import { CookieJar } from "./cookies";
+import { CookieJar, normalizeJsessionId, parseCookieHeader } from "./cookies";
 import { getDb } from "../mongo";
 
-const USER_AGENT =
+const DEFAULT_USER_AGENT =
   "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36";
 
 const SESSION_COLLECTION = "linkedin_sessions";
@@ -15,7 +15,7 @@ const MEMORY_TTL_MS = 30 * 60 * 1000;
 
 export function browserHeaders(extra: Record<string, string> = {}) {
   return {
-    "user-agent": USER_AGENT,
+    "user-agent": env.userAgent ?? DEFAULT_USER_AGENT,
     "accept-language": "en-US,en;q=0.9",
     "accept-encoding": "gzip, deflate, br",
     ...extra,
@@ -27,10 +27,43 @@ export async function getSession(forceNew = false): Promise<CookieJar> {
     return cached.jar;
   }
 
+  if (env.cookie) {
+    const parsed = parseCookieHeader(env.cookie);
+    if (!parsed.li_at) {
+      throw new ApiError(
+        "NOT_CONFIGURED",
+        "LINKEDIN_COOKIE does not contain an li_at cookie. Copy the whole Cookie header from a logged-in request.",
+      );
+    }
+    if (!parsed.JSESSIONID && env.jsessionId) {
+      parsed.JSESSIONID = normalizeJsessionId(env.jsessionId);
+    }
+    if (!parsed.JSESSIONID) {
+      throw new ApiError(
+        "NOT_CONFIGURED",
+        "LINKEDIN_COOKIE has no JSESSIONID, which is needed for the CSRF token.",
+      );
+    }
+    parsed.JSESSIONID = normalizeJsessionId(parsed.JSESSIONID);
+    const jar = new CookieJar(parsed);
+    cached = { jar, createdAt: Date.now() };
+    return jar;
+  }
+
+  if (env.liAt) {
+    const jar = new CookieJar({
+      li_at: env.liAt,
+      JSESSIONID: normalizeJsessionId(env.jsessionId ?? `ajax:${randomAjaxId()}`),
+      lang: "v=2&lang=en-us",
+    });
+    cached = { jar, createdAt: Date.now() };
+    return jar;
+  }
+
   if (!env.email || !env.password) {
     throw new ApiError(
       "NOT_CONFIGURED",
-      "No LinkedIn credentials configured. Set LINKEDIN_EMAIL and LINKEDIN_PASSWORD.",
+      "No LinkedIn credentials configured. Set LINKEDIN_LI_AT (plus LINKEDIN_JSESSIONID), or LINKEDIN_EMAIL and LINKEDIN_PASSWORD.",
     );
   }
 
@@ -163,4 +196,10 @@ function describeLoginFailure(location: string, status: number) {
         ? `LinkedIn refused the login (errorKey=${errorKey}).`
         : `Login did not return a session cookie (HTTP ${status}). Credentials may be wrong or the account is flagged.`;
   }
+}
+
+function randomAjaxId() {
+  let out = "";
+  for (let i = 0; i < 19; i++) out += Math.floor(Math.random() * 10);
+  return out;
 }

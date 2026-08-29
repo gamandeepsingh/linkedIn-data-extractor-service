@@ -1,5 +1,8 @@
+const DELETED_VALUES = new Set(["delete me", '"delete me"', "", '""']);
+
 export class CookieJar {
   private jar = new Map<string, string>();
+  private cleared = new Set<string>();
 
   constructor(initial?: Record<string, string>) {
     if (initial) {
@@ -9,6 +12,11 @@ export class CookieJar {
 
   set(name: string, value: string) {
     this.jar.set(name, value);
+    this.cleared.delete(name);
+  }
+
+  wasCleared(name: string) {
+    return this.cleared.has(name);
   }
 
   get(name: string) {
@@ -32,8 +40,9 @@ export class CookieJar {
       const name = pair.slice(0, idx).trim();
       const value = pair.slice(idx + 1).trim();
       if (!name) continue;
-      if (value === '"delete me"' || value === "") {
+      if (DELETED_VALUES.has(value)) {
         this.jar.delete(name);
+        this.cleared.add(name);
         continue;
       }
       this.jar.set(name, value);
@@ -60,3 +69,21 @@ function splitSetCookie(header: string | null): string[] {
   return header.split(/,(?=[^;,]*?=)/g);
 }
 
+export function normalizeJsessionId(value: string) {
+  const bare = value.replace(/"/g, "").trim();
+  return `"${bare}"`;
+}
+
+export function parseCookieHeader(header: string): Record<string, string> {
+  const out: Record<string, string> = {};
+  for (const part of header.split(/;\s*/)) {
+    const trimmed = part.trim();
+    if (!trimmed) continue;
+    const i = trimmed.indexOf("=");
+    if (i <= 0) continue;
+    const name = trimmed.slice(0, i).trim();
+    const value = trimmed.slice(i + 1).trim();
+    if (name && value) out[name] = value;
+  }
+  return out;
+}

@@ -1,5 +1,8 @@
 # LinkedIn Profile API
 
+<img width="1470" height="881" alt="Screenshot 2026-08-29 at 11 42 01 AM" src="https://github.com/user-attachments/assets/a60d9824-c500-4ec8-b62e-2707f739e874" />
+
+
 Give it a LinkedIn profile URL, get the profile back as JSON.
 
 ## Setup
